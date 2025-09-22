@@ -3270,6 +3270,21 @@ td:last-child {
     align-items: center;
 }
 
+.header-contact {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    padding: 0.5em 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown-timer span {
+    margin: 0 4px;
+}
+
 /* --------------------------------------------------------------------
  * ## logo
  * -------------------------------------------------------------------- */
