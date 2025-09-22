@@ -6,7 +6,7 @@
     ================================================== -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Beth</title>
+    <title>Beth & Inés' memories</title>
 
     <script>
         document.documentElement.classList.remove('no-js');
@@ -68,12 +68,16 @@
                         <li><a class="smoothscroll" href="#gallery">Gallery</a></li>
                     </ul> <!-- end header-nav__links -->  
                     
-                    <div class="header-contact">
-                        <a href="tel:+" class="header-contact__num btn">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" width="24" height="24" color="#000000"><defs><style>.cls-6376396cc3a86d32eae6f0dc-1{fill:none;stroke:currentColor;stroke-miterlimit:10;}</style></defs><path class="cls-6376396cc3a86d32eae6f0dc-1" d="M19.64,21.25c-2.54,2.55-8.38.83-13-3.84S.2,6.9,2.75,4.36L5.53,1.57,10.9,6.94l-2,2A2.18,2.18,0,0,0,8.9,12L12,15.1a2.18,2.18,0,0,0,3.07,0l2-2,5.37,5.37Z"></path></svg>
-                            555-123-3456
-                        </a>
-                    </div> <!-- end header-contact -->
+                   <div class="header-contact">
+    <div class="countdown-timer" id="countdown">
+        <span id="years">0</span> an(s) 
+        <span id="days">0</span> jour(s) 
+        <span id="hours">0</span> heure(s) 
+        <span id="minutes">0</span> minute(s) 
+        <span id="seconds">0</span> seconde(s)
+    </div>
+</div>
+
                 </nav> <!-- end header-nav -->         
             
             </div> <!-- end s-header__content -->
@@ -716,6 +720,37 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+
+    <script>
+    // Date cible : 18 juin 2024 à 23h
+    const targetDate = new Date("June 18, 2024 23:00:00").getTime();
+
+    // Mettre à jour le compteur toutes les secondes
+    const interval = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            clearInterval(interval);
+            document.getElementById("countdown").innerHTML = "Le compte à rebours est terminé !";
+            return;
+        }
+
+        const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+        const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("years").textContent = years;
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+    }, 1000);
+</script>
+
 
 </body>
 </html>
