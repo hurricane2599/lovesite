@@ -69,7 +69,7 @@
                     </ul> <!-- end header-nav__links -->  
                     
                    <div class="header-contact">
-    <div class="countdown-timer" id="countdown">
+    <div class="countup-timer" id="countup">
         <span id="years">0</span> an(s) 
         <span id="days">0</span> jour(s) 
         <span id="hours">0</span> heure(s) 
@@ -722,26 +722,29 @@
     <script src="js/main.js"></script>
 
 
-    <script>
-    // Date cible : 18 juin 2024 à 23h
-    const targetDate = new Date("June 18, 2024 23:00:00").getTime();
+<script>
+    // Date de départ : 18 juin 2024 à 23h
+    const startDate = new Date("June 18, 2024 23:00:00").getTime();
 
-    // Mettre à jour le compteur toutes les secondes
-    const interval = setInterval(function() {
+    setInterval(() => {
         const now = new Date().getTime();
-        const distance = targetDate - now;
+        const elapsed = now - startDate;
 
-        if (distance < 0) {
-            clearInterval(interval);
-            document.getElementById("countdown").innerHTML = "Le compte à rebours est terminé !";
+        if (elapsed < 0) {
+            // Si on est avant la date de départ, affiche 0 partout
+            document.getElementById("years").textContent = 0;
+            document.getElementById("days").textContent = 0;
+            document.getElementById("hours").textContent = 0;
+            document.getElementById("minutes").textContent = 0;
+            document.getElementById("seconds").textContent = 0;
             return;
         }
 
-        const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
-        const days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const years = Math.floor(elapsed / (1000 * 60 * 60 * 24 * 365));
+        const days = Math.floor((elapsed % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
 
         document.getElementById("years").textContent = years;
         document.getElementById("days").textContent = days;
@@ -750,6 +753,7 @@
         document.getElementById("seconds").textContent = seconds;
     }, 1000);
 </script>
+
 
 
 </body>
